@@ -1,25 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from "react";
+import SchedulePage from "./components/SchedulePage/SchedulePage";
+import { I18nProvider, LOCALES } from "./i18n";
+import { ScheduleContext } from "./context/Provider";
+
+import "react-calendar/dist/Calendar.css";
 
 function App() {
+  const { lang } = useContext(ScheduleContext);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <I18nProvider locale={LOCALES[lang]}>
+      <SchedulePage />
+    </I18nProvider>
   );
 }
 
