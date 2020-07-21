@@ -4,6 +4,7 @@ export default {
   [LOCALES.ENGLISH]: {
     "Schedule Title": "Schedule Title",
     name: "Name",
+    "Report Document": "Report Document",
     email: "email",
     "Report Sender": "Report Sender",
     "Pick a schedule time and date": "Pick a schedule time and date",

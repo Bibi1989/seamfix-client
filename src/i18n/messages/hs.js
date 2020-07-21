@@ -5,6 +5,7 @@ export default {
     "Schedule Title": "Taken jadawalin",
     name: "Suna",
     email: "imel",
+    "Report Document": "Rubuta rahoton",
     "Report Sender": "Mai aiko da rahoto",
     "Pick a schedule time and date": "Zaɓi jadawalin lokaci da kwanan wata",
     once: "Da zarar",

@@ -4,6 +4,7 @@ export default {
   [LOCALES.FRENCH]: {
     "Schedule Title": "Titre du programme",
     name: "Nom",
+    "Report Document": "Document de rapport",
     file: "File",
     "Report Sender": "Signaler l'expéditeur",
     "Pick a schedule time and date": "Choisissez une heure et une date",

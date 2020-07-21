@@ -27,3 +27,14 @@ export const stopAtCombineDate = (values) => {
     return "";
   }
 };
+
+export const isImage = (schedule) => {
+  let check = ["jpg", "gif", "png"].filter(
+    (ext) => ext === schedule.slice(schedule.length - 3).toLowerCase()
+  );
+  if (check.length > 0) {
+    return true;
+  } else {
+    return false;
+  }
+};

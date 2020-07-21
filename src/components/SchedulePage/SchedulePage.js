@@ -29,15 +29,23 @@ const SchedulePage = () => {
     performed_at: "",
     performed_time: "",
     interval_range: "",
-    interval_time: "",
+    interval_time: "minutes",
     stop_date: "",
     stop_time: "",
   });
+  const [file, setFile] = useState();
   const [error, setError] = useState();
   const handleInput = ({ target: { name, value } }) => {
     setValues({
       ...values,
       [name]: value,
+    });
+  };
+
+  const handleFile = ({ target: { files } }) => {
+    setValues({
+      ...values,
+      file: files[0],
     });
   };
 
@@ -55,12 +63,17 @@ const SchedulePage = () => {
     let schedule_date = scheduleCombineDate(values);
     let stop_date = stopAtCombineDate(values);
 
-    const form = {
-      ...values,
-      type,
-      schedule_date,
-      stop_date,
-    };
+    const form = new FormData();
+    form.append("name", values.name);
+    form.append("scheduler", values.scheduler);
+    form.append("schedule_date", schedule_date);
+    form.append("email", values.email);
+    form.append("interval_range", values.interval_range);
+    form.append("interval_time", values.interval_time);
+    form.append("stop_date", stop_date);
+    form.append("file", values.file);
+    form.append("type", type);
+
     scheduleReport(form);
   };
 
@@ -94,6 +107,14 @@ const SchedulePage = () => {
           {errors && errors.name && (
             <ErrorLabel>*This Field cannot be empty</ErrorLabel>
           )}
+        </DivGroup>
+        <DivGroup>
+          <Label>{translate("Report Document")}</Label>
+          <Input
+            type='file'
+            placeholder='Upload a report'
+            onChange={handleFile}
+          />
         </DivGroup>
         <DivGroup>
           <Label>{translate("Report Sender")}</Label>
@@ -159,7 +180,7 @@ const SchedulePage = () => {
             <DivGroup>
               <Label>{translate("Choose an interval")}</Label>
               <Input
-                type='text'
+                type='number'
                 placeholder='Choose an interval'
                 onChange={(e) =>
                   setValues({ ...values, interval_range: e.target.value })

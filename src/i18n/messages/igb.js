@@ -4,6 +4,7 @@ export default {
   [LOCALES.IGBO]: {
     "Schedule Title": "Isi Okwu",
     name: "Aha",
+    "Report Document": "Akwụkwọ Ego",
     email: "ozi ịntanetị",
     "Report Sender": "Ziga Onye Kpesa",
     "Pick a schedule time and date": "Họrọ oge na ubochi",

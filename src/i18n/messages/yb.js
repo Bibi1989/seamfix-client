@@ -4,6 +4,7 @@ export default {
   [LOCALES.YORUBA]: {
     "Schedule Title": "Akọle Iṣeto",
     name: "orukọ",
+    "Report Document": "Iwe adehun ijabọ",
     email: "imeeli",
     "Report Sender": "Oluranni Iroyin",
     "Pick a schedule time and date": "Mu akoko iṣeto ati ọjọ",

@@ -1,16 +1,26 @@
-import React, { useContext } from "react";
-import { ScheduleList, Flex } from "./style";
-import { Icon } from "semantic-ui-react";
+import React, { useContext, useState } from "react";
+import { ScheduleList, Flex, Image } from "./style";
+import { Icon, Accordion } from "semantic-ui-react";
 import { ScheduleContext } from "../../context/Provider";
 
-import { getTime } from "../../utils/dates";
+import { getTime, isImage } from "../../utils/dates";
 
 const Schedule = ({ schedule }) => {
   const { cancelSchedule } = useContext(ScheduleContext);
   const handleDelete = (id) => {
     cancelSchedule(id);
-    // window.location.href = window.location.origin;
   };
+
+  const [state, setState] = useState(-1);
+
+  const handleClick = (e, titleProps) => {
+    const { index } = titleProps;
+    const activeIndex = state;
+    const newIndex = activeIndex === index ? -1 : index;
+
+    setState(newIndex);
+  };
+
   return (
     <ScheduleList>
       <Flex status={schedule.type}>
@@ -48,6 +58,25 @@ const Schedule = ({ schedule }) => {
           </p>
         </div>
       </Flex>
+      <Accordion>
+        <Accordion.Title active={state === 0} index={0} onClick={handleClick}>
+          <Icon name='dropdown' />
+          Click to see document
+        </Accordion.Title>
+        <Accordion.Content active={state === 0}>
+          {isImage(schedule.file) ? (
+            <Image>
+              <a href={schedule.file} target='_blank' rel='noopener noreferrer'>
+                <img src={schedule.file} alt='' />
+              </a>
+            </Image>
+          ) : (
+            <a href={schedule.file} target='_blank' rel='noopener noreferrer'>
+              Click Me to view document
+            </a>
+          )}
+        </Accordion.Content>
+      </Accordion>
     </ScheduleList>
   );
 };
