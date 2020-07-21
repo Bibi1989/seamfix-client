@@ -53,7 +53,8 @@ const reducer = (state, action) => {
   }
 };
 
-const URL = `http://localhost:5000/api/upload`;
+// const URL = `http://localhost:5000/api/upload`;
+const URL = `https://seamfix-server.herokuapp.com/api/upload`;
 
 export const Provider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
